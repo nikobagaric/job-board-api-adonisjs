@@ -1,12 +1,14 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import type { HasOne } from '@adonisjs/lucid/types/relations'
+import User from '#models/user'
 
 export default class Job extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
-  @column()
-  declare employerId: number
+  @hasOne(() => User)
+  declare employerId: HasOne<typeof User>
 
   @column()
   declare title: string

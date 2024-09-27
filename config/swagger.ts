@@ -9,7 +9,7 @@ export default {
     description: "",
     tagIndex: 2,
     info: {
-      title: "title",
+      title: "Job Board API",
       version: "1.0.0",
       description: "",
     },

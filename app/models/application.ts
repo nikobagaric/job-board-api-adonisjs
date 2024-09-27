@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import type { HasOne } from '@adonisjs/lucid/types/relations'
+import User from '#models/user'
 
 export enum ApplicationStatus {
   PENDING = 'pending',
@@ -14,8 +16,8 @@ export default class Application extends BaseModel {
   @column()
   declare jobId: number
 
-  @column()
-  declare applicantId: number
+  @hasOne(() => User)
+  declare applicantId: HasOne<typeof User>
 
   @column()
   declare coverLetter: string

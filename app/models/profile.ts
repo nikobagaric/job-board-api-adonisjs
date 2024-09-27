@@ -1,12 +1,14 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import type { HasOne } from '@adonisjs/lucid/types/relations'
+import User from '#models/user'
 
 export default class Profile extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
-  @column()
-  declare userId: number
+  @hasOne(() => User)
+  declare userId: HasOne<typeof User>
 
   @column()
   declare fullName: string
